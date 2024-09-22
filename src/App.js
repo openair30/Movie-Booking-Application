@@ -9,7 +9,13 @@ import './App.css';
 import BookingHistory from './components/BookingHistory';
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [history, setHistory] = useState([]); // Booking history shared between components
+    const [isLoggedIn, setIsLoggedIn] = useState(true); // You can manage login state here
+
+    // This function is passed to Home for updating history when a booking is made
+    const addToHistory = (newBooking) => {
+        setHistory((prevHistory) => [...prevHistory, newBooking]);
+    };
 
     const handleLogout = () => {
         setIsLoggedIn(false);
@@ -21,11 +27,11 @@ function App() {
             <NavigationBar isLoggedIn={isLoggedIn} onLogout={handleLogout} /> {/* Always render the NavigationBar */}
             <div className="content"> {/* Optional: Add some styling for spacing */}
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home addToHistory={addToHistory} />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/booking-history" element={<BookingHistory />} />
+                    <Route path="/booking-history" element={<BookingHistory history={history} />} />
                 </Routes>
             </div>
         </Router>

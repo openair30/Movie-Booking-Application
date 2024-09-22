@@ -1,6 +1,6 @@
 .booking-history {
   padding: 20px;
-  background-color: #1e1e1e;
+  background: linear-gradient(135deg, #833e2d, #220802);
   color: #fff;
   border-radius: 8px;
   margin: 20px auto;
@@ -11,7 +11,7 @@
 .booking-history h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #f39c12;
+  color: #fff;
 }
 
 .booking-history ul {
@@ -20,7 +20,7 @@
 }
 
 .booking-item {
-  background-color: #333;
+  background: linear-gradient(135deg, #1e1e1e, #000000);;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
@@ -28,7 +28,7 @@
 
 .booking-item h3 {
   margin: 0 0 10px;
-  color: #f39c12;
+  color: #ffffff;
 }
 
 .booking-item p {

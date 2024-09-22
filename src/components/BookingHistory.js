@@ -1,7 +1,7 @@
 import React from 'react';
 import './BookingHistory.css';
 
-const BookingHistory = ({ history }) => {
+const BookingHistory = ({ history = [] }) => {
   return (
     <div className="booking-history">
       <h2>Your Booking History</h2>

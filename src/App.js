@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Login'; 
+import Profile from './components/Profile';
+import Contact from './components/Contact';
+import NavigationBar from './components/NavigationBar'; // Import your NavigationBar
 import './App.css';
+import BookingHistory from './components/BookingHistory';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        // Additional logout logic (like clearing tokens, etc.)
+    };
+
+    return (
+        <Router>
+            <NavigationBar isLoggedIn={isLoggedIn} onLogout={handleLogout} /> {/* Always render the NavigationBar */}
+            <div className="content"> {/* Optional: Add some styling for spacing */}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/booking-history" element={<BookingHistory />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import './Profile.css';
-import { FaEdit, FaSignOutAlt } from 'react-icons/fa'; // Icons for edit and logout
 
 function Profile() {
     const [user, setUser] = useState({
         name: "Raj Singh",
         email: "raj@example.com",
         username: "raj_singh",
-        profilePic: "path_to_profile_pic.jpg", // Path to profile photo
+        profilePic: "", 
     });
 
-    const [isEditing, setIsEditing] = useState(false); // Modal visibility state
+    const [isEditing, setIsEditing] = useState(false);
     const [newName, setNewName] = useState(user.name);
     const [newEmail, setNewEmail] = useState(user.email);
+    const [newUsername, setNewUsername] = useState(user.username);
     const [newProfilePic, setNewProfilePic] = useState(user.profilePic);
 
+    const defaultPic = "https://via.placeholder.com/150"; 
+
     const handleEditProfile = () => {
-        setIsEditing(true); // Open modal
+        setIsEditing(true);
     };
 
     const handleSaveProfile = () => {
@@ -24,41 +26,41 @@ function Profile() {
             ...user,
             name: newName,
             email: newEmail,
+            username: newUsername,
             profilePic: newProfilePic,
         });
-        setIsEditing(false); // Close modal after saving
+        setIsEditing(false);
     };
 
     const handleProfilePicChange = (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onloadend = () => {
-            setNewProfilePic(reader.result); // Set new profile picture
+            setNewProfilePic(reader.result);
         };
         reader.readAsDataURL(file);
     };
 
     return (
-        <div className="profile-page">
-            {/* Hero Section */}
-            <div className="hero-section">
-                <img className="profile-pic" src={user.profilePic} alt="Profile" />
+        <div className="profile-container">
+            <h1>User Profile</h1>
+            <div className="profile-info">
+                <img
+                    className="profile-pic"
+                    src={user.profilePic || defaultPic}
+                    alt="Profile"
+                />
                 <div className="user-details">
                     <h2>{user.name}</h2>
                     <p>Email: {user.email}</p>
                     <p>Username: {user.username}</p>
-                    <div className="profile-buttons">
-                        <button className="edit-button" onClick={handleEditProfile}>
-                            <FaEdit /> Edit Profile
-                        </button>
-                        <button className="logout-button">
-                            <FaSignOutAlt /> Logout
-                        </button>
-                    </div>
+                    <button className="edit-button" onClick={handleEditProfile}>
+                        Edit Profile
+                    </button>
+                    <button className="logout-button">Logout</button>
                 </div>
             </div>
 
-            {/* Edit Profile Modal */}
             {isEditing && (
                 <div className="edit-modal">
                     <div className="modal-content">
@@ -66,7 +68,7 @@ function Profile() {
                         <div className="edit-form">
                             <label>Profile Picture:</label>
                             <input type="file" accept="image/*" onChange={handleProfilePicChange} />
-                            <img className="preview-pic" src={newProfilePic} alt="Preview" />
+                            <img className="preview-pic" src={newProfilePic || defaultPic} alt="Preview" />
 
                             <label>Name:</label>
                             <input
@@ -82,12 +84,15 @@ function Profile() {
                                 onChange={(e) => setNewEmail(e.target.value)}
                             />
 
-                            <button className="save-button" onClick={handleSaveProfile}>
-                                Save
-                            </button>
-                            <button className="cancel-button" onClick={() => setIsEditing(false)}>
-                                Cancel
-                            </button>
+                            <label>Username:</label> 
+                            <input
+                                type="text"
+                                value={newUsername}
+                                onChange={(e) => setNewUsername(e.target.value)}
+                            />
+
+                            <button className="save-button" onClick={handleSaveProfile}>Save</button>
+                            <button className="cancel-button" onClick={() => setIsEditing(false)}>Cancel</button>
                         </div>
                     </div>
                 </div>

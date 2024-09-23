@@ -1,127 +1,89 @@
-/* Body Styling */
+/* General Styles */
 body {
-  background-color: #0a0a0a;
-  color: #f5f5f5;
-  font-family: 'Poppins', sans-serif;
+  background-color: #121212; /* Dark background for the whole page */
+  color: #e0e0e0; /* Light text color */
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Profile Page Container */
-.profile-page {
-  max-width: 1200px;
-  margin: 0 auto;
+/* Profile Container */
+.profile-container {
   padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(135deg, #833e2d, #220802);
-  padding: 40px;
-  border-radius: 15px;
+/* Profile Info */
+.profile-info {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 40px;
 }
 
 .profile-pic {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  border: 4px solid #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  object-fit: cover;
+  margin-right: 20px;
 }
 
 .user-details {
-  flex: 1;
-  margin-left: 40px;
+  text-align: left;
 }
 
-.user-details h2 {
-  font-size: 28px;
-  margin: 10px 0;
-  color: #fff;
+/* Buttons */
+.edit-button, .logout-button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: black; /* Black background for buttons */
+  color: white; /* White text for buttons */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.user-details p {
-  font-size: 18px;
-  margin: 5px 0;
-  color: #fff;
+.edit-button:hover {
+  background-color: #ff416c; /* Hover color for edit button */
 }
 
-.profile-buttons {
+.logout-button:hover {
+  background-color: #666; /* Hover color for logout button */
+}
+
+/* Booking Table */
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
 }
 
-/* Edit Profile and Logout Buttons */
-.edit-button, .logout-button {
-  padding: 12px 25px;
-  margin: 10px;
-  background-color: #000; /* Set button background to black */
-  color: #fff; /* Set button text color to white */
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
-
-.edit-button:hover, .logout-button:hover {
-  background-color: #444; /* Hover effect background */
-  color: white;
-}
-
-
-/* Booking Cards */
-.booking-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.booking-card {
-  background: #1e1e1e;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+.booking-table th, .booking-table td {
+  border: 1px solid #444;
+  padding: 10px;
   text-align: center;
-  transition: transform 0.3s ease;
 }
 
-.booking-card:hover {
-  transform: translateY(-10px);
+.booking-table th {
+  background-color: #ff4b2b; /* Header background color */
 }
 
-.movie-poster {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 20px;
+.booking-table tr:nth-child(even) {
+  background-color: #222; /* Zebra stripes for table rows */
 }
 
-.booking-info h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #ff416c;
-}
-
-.booking-info p {
-  font-size: 16px;
-  margin: 5px 0;
-  color: #ccc;
-}
-
-/* Modal Styles */
+/* Modal Styles - Dark Coffee Background */
 .edit-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,54 +91,80 @@ body {
 }
 
 .modal-content {
-  background: #222;
+  background: #4b3621; /* Dark coffee background */
   padding: 30px;
   border-radius: 15px;
   width: 400px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Edit Form Layout */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .edit-form label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   text-align: left;
-  color: #fff;
+  width: 100%;
+  color: #fff; /* White label color */
 }
 
-.edit-form input[type="text"], .edit-form input[type="email"] {
+.edit-form input[type="text"],
+.edit-form input[type="email"] {
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border: none;
   border-radius: 5px;
-  background: #333;
-  color: #fff;
+  background: #333; /* Dark background for inputs */
+  color: #fff; /* White text */
+  font-size: 14px;
 }
 
-.edit-form input[type="file"] {
-  margin-bottom: 10px;
-}
-
+/* Profile Picture and File Input */
 .preview-pic {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  margin: 10px 0;
+  margin-bottom: 10px;
   object-fit: cover;
 }
 
+.file-input {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-input input[type="file"] {
+  background: none;
+  color: #fff;
+  margin-top: 10px; /* Adds space between the label and the file input */
+}
+
+/* Shining Buttons */
 .save-button, .cancel-button {
-  padding: 12px 25px;
+  padding: 10px 20px;
   margin: 10px;
-  background-color: #ff4b2b;
-  color: white;
+  background-color: #222; /* Dark button background */
+  color: #fff; /* White text */
   border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); /* Shining golden effect */
 }
 
 .save-button:hover, .cancel-button:hover {
-  background-color: #ff416c;
+  background-color: #444; /* Hover color for buttons */
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5); /* Enhanced shining effect on hover */
+  transform: scale(1.05); /* Slightly enlarge buttons on hover */
 }

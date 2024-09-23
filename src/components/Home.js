@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MoviesList from './MoviesList';
-import moviesData from '../data/movies.json'; // Adjust the path as needed
+import moviesData from '../data/movies.json'; // Adjust the path as needed'
+import './Home.css'
 
 const Home = ({ addToHistory }) => {
   const [movies, setMovies] = useState([]);
@@ -50,7 +51,6 @@ const Home = ({ addToHistory }) => {
 
   return (
     <div>
-      <h1>This Week Movies</h1>
       <div>
         <select onChange={(e) => setSelectedMonth(e.target.value)} value={selectedMonth}>
           <option value="All">All Months</option>

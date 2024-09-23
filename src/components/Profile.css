@@ -1,80 +1,182 @@
-/* General Styles */
+/* Body Styling */
 body {
-  background-color: #121212;
-  color: #e0e0e0;
-  font-family: 'Arial', sans-serif;
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Profile Container */
-.profile-container {
-  padding: 20px;
-  max-width: 800px;
+/* Profile Page Container */
+.profile-page {
+  max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+  padding: 20px;
 }
 
-/* Profile Info */
-.profile-info {
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #833e2d, #220802);
+  padding: 40px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 40px;
 }
 
 .profile-pic {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  margin-right: 20px;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
 }
 
 .user-details {
-  text-align: left;
+  flex: 1;
+  margin-left: 40px;
 }
 
-/* Buttons */
+.user-details h2 {
+  font-size: 28px;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.user-details p {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #fff;
+}
+
+.profile-buttons {
+  margin-top: 20px;
+}
+
+/* Edit Profile and Logout Buttons */
 .edit-button, .logout-button {
-  padding: 10px 20px;
+  padding: 12px 25px;
+  margin: 10px;
+  background-color: #000; /* Set button background to black */
+  color: #fff; /* Set button text color to white */
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.edit-button:hover, .logout-button:hover {
+  background-color: #444; /* Hover effect background */
+  color: white;
+}
+
+
+/* Booking Cards */
+.booking-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.booking-card {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-10px);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.booking-info h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ff416c;
+}
+
+.booking-info p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #ccc;
+}
+
+/* Modal Styles */
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #222;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.edit-form label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #fff;
+}
+
+.edit-form input[type="text"], .edit-form input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: #fff;
+}
+
+.edit-form input[type="file"] {
+  margin-bottom: 10px;
+}
+
+.preview-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 10px 0;
+  object-fit: cover;
+}
+
+.save-button, .cancel-button {
+  padding: 12px 25px;
   margin: 10px;
   background-color: #ff4b2b;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
 }
 
-.edit-button:hover {
+.save-button:hover, .cancel-button:hover {
   background-color: #ff416c;
-}
-
-.logout-button {
-  background-color: #444;
-}
-
-.logout-button:hover {
-  background-color: #666;
-}
-
-/* Booking Table */
-.booking-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.booking-table th, .booking-table td {
-  border: 1px solid #444;
-  padding: 10px;
-  text-align: center;
-}
-
-.booking-table th {
-  background-color: #ff4b2b;
-}
-
-.booking-table tr:nth-child(even) {
-  background-color: #222;
 }

@@ -91,7 +91,7 @@ body {
 }
 
 .modal-content {
-  background: #4b3621; /* Dark coffee background */
+  background: linear-gradient(135deg, #833e2d, #220802); /* Dark coffee background */
   padding: 30px;
   border-radius: 15px;
   width: 400px;

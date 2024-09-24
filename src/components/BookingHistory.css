@@ -24,7 +24,23 @@
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
-  position: relative; /* For positioning poster */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping of content if space is constrained */
+}
+
+.booking-item-left {
+  flex: 2;
+  min-width: 60%; /* Ensure the left side has enough space */
+}
+
+.booking-item-right {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  padding-left: 20px;
+  max-width: 35%; /* Restrict the poster width */
 }
 
 .booking-item h3 {
@@ -37,9 +53,9 @@
 }
 
 .booking-poster {
-  max-width: 20%; /* Ensure the poster fits within the container */
-  border-radius: 5px; /* Add some rounding for aesthetics */
-  margin-bottom: 10px; /* Space between poster and text */
+  max-width: 100%;
+  border-radius: 5px;
+  max-height: 150px;
 }
 
 .no-bookings {

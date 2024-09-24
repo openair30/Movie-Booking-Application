@@ -9,10 +9,20 @@ const BookingHistory = ({ history = [] }) => {
         <ul>
           {history.map((booking, index) => (
             <li key={index} className="booking-item">
-              <h3>{booking.title}</h3>
-              <p>Tickets Booked: {booking.tickets}</p>
-              <p>Date: {booking.bookedDate}</p>
-              <p>Time: {booking.bookedTime}</p>
+              {/* Left side: Title and Booking Details */}
+              <div className="booking-item-left">
+                <h3>{booking.title}</h3>
+                <p>Tickets Booked: {booking.tickets}</p>
+                <p>Booked Date: {booking.bookedDate}</p>
+                <p>Booked Time: {booking.bookedTime}</p>
+                <p>Movie Date: {booking.movieDate}</p>
+                <p>Movie Time: {booking.movieTime}</p>
+              </div>
+
+              {/* Right side: Poster */}
+              <div className="booking-item-right">
+                <img src={booking.poster} alt={booking.title} className="booking-poster" />
+              </div>
             </li>
           ))}
         </ul>
@@ -24,5 +34,4 @@ const BookingHistory = ({ history = [] }) => {
     </div>
   );
 };
-
-export default BookingHistory;
+export default BookingHistory;  

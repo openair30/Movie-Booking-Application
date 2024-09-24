@@ -6,6 +6,8 @@ import './MoviesList.css';
 const MoviesList = ({ movies, bookTicket, cancelBooking }) => {
   const [bookedMovies, setBookedMovies] = useState({});
   const [selectedTickets, setSelectedTickets] = useState({});
+  const [selectedDate, setSelectedDate] = useState({});
+  const [selectedTime, setSelectedTime] = useState({});
 
   const handleTicketChange = (movieId, increment) => {
     setSelectedTickets((prev) => ({
@@ -16,6 +18,15 @@ const MoviesList = ({ movies, bookTicket, cancelBooking }) => {
 
   const handleBooking = (movie) => {
     const ticketsToBook = selectedTickets[movie.id] || 1;
+    const dateSelected = selectedDate[movie.id];
+    const timeSelected = selectedTime[movie.id];
+
+    // Validation for date and time selection
+    if (!dateSelected || !timeSelected) {
+      toast.error("Please select a date and time before booking.", { theme: 'dark' });
+      return;
+    }
+
     if (movie.availableTickets >= ticketsToBook) {
       setBookedMovies((prev) => ({
         ...prev,
@@ -57,6 +68,19 @@ const MoviesList = ({ movies, bookTicket, cancelBooking }) => {
     }
   };
 
+  // Function to generate the next 14 days of dates
+  const generateDates = () => {
+    const today = new Date();
+    return Array.from({ length: 14 }, (_, i) => {
+      const nextDate = new Date(today);
+      nextDate.setDate(today.getDate() + i);
+      return nextDate.toLocaleDateString(); // Format the date as needed
+    });
+  };
+
+  const availableDates = generateDates();
+  const availableTimes = ["9-12", "12-3", "3-6", "6-9", "9-12"];
+
   return (
     <div className="movie-list">
       <ToastContainer />
@@ -68,6 +92,34 @@ const MoviesList = ({ movies, bookTicket, cancelBooking }) => {
           <img src={movie.poster} alt={movie.title} className="movie-poster" />
           <h3 className="movie-title">{movie.title}</h3>
           <p className="available-tickets">Available Tickets: {movie.availableTickets}</p>
+
+          {/* Date Dropdown */}
+          <select 
+            value={selectedDate[movie.id] || ''} 
+            onChange={(e) => setSelectedDate({ ...selectedDate, [movie.id]: e.target.value })}
+            className="dropdown"
+          >
+            <option value="">Select Date</option>
+            {availableDates.map((date) => (
+              <option key={date} value={date}>
+                {date}
+              </option>
+            ))}
+          </select>
+
+          {/* Time Dropdown */}
+          <select 
+            value={selectedTime[movie.id] || ''} 
+            onChange={(e) => setSelectedTime({ ...selectedTime, [movie.id]: e.target.value })}
+            className="dropdown"
+          >
+            <option value="">Select Time</option>
+            {availableTimes.map((time) => (
+              <option key={time} value={time}>
+                {time}
+              </option>
+            ))}
+          </select>
 
           {movie.availableTickets > 0 ? (
             !bookedMovies[movie.id] ? (

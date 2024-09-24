@@ -20,10 +20,27 @@
 }
 
 .booking-item {
-  background: linear-gradient(135deg, #1e1e1e, #000000);;
+  background: linear-gradient(135deg, #1e1e1e, #000000);
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping of content if space is constrained */
+}
+
+.booking-item-left {
+  flex: 2;
+  min-width: 60%; /* Ensure the left side has enough space */
+}
+
+.booking-item-right {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  padding-left: 20px;
+  max-width: 35%; /* Restrict the poster width */
 }
 
 .booking-item h3 {
@@ -33,6 +50,12 @@
 
 .booking-item p {
   margin: 5px 0;
+}
+
+.booking-poster {
+  max-width: 100%;
+  border-radius: 5px;
+  max-height: 150px;
 }
 
 .no-bookings {

@@ -20,10 +20,11 @@
 }
 
 .booking-item {
-  background: linear-gradient(135deg, #1e1e1e, #000000);;
+  background: linear-gradient(135deg, #1e1e1e, #000000);
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  position: relative; /* For positioning poster */
 }
 
 .booking-item h3 {
@@ -33,6 +34,12 @@
 
 .booking-item p {
   margin: 5px 0;
+}
+
+.booking-poster {
+  max-width: 20%; /* Ensure the poster fits within the container */
+  border-radius: 5px; /* Add some rounding for aesthetics */
+  margin-bottom: 10px; /* Space between poster and text */
 }
 
 .no-bookings {
